@@ -4,7 +4,7 @@ import MoleButton from "../../components/Molecules/MoleButton"
 import { appColor } from "../../components/Constant"
 import { useNavigation } from "@react-navigation/native"
 
-export default function LoginForm() {
+export default function RegistrationForm() {
   const navigation = useNavigation()
   const {
     control,
@@ -12,6 +12,7 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm({
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
@@ -19,6 +20,26 @@ export default function LoginForm() {
   const onSubmit = (data) => console.log(data)
   return (
     <View style={styles.container}>
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={styles.inputField}
+            placeholder="Name"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="name"
+      />
+      {errors.name?.type === "required" && (
+        <Text style={styles.errorText}>Name is required</Text>
+      )}
+
       <Controller
         control={control}
         rules={{
@@ -70,13 +91,13 @@ export default function LoginForm() {
       <MoleButton
         customStyle={styles.button}
         handleClick={handleSubmit(onSubmit)}
-        title="Login"
+        title="Sign Up"
       />
-      <Text>Don't Have Any Account?</Text>
+      <Text>Already Have An Account?</Text>
       <MoleButton
         customStyle={styles.createAccountButton}
-        title="Create An Account"
-        handleClick={() => navigation.navigate("register")}
+        title="Login "
+        handleClick={() => navigation.navigate("login")}
       />
     </View>
   )

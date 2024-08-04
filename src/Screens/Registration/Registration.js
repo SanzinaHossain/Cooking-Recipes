@@ -1,17 +1,15 @@
-import React from "react"
 import { Image, StyleSheet, View } from "react-native"
 import logo from "../../../assets/logo.png"
-import LoginForm from "./LoginForm"
+import RegistrationForm from "./RegistrationForm"
 
-export default function Login() {
+export default function Registration() {
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
-      <LoginForm />
+      <RegistrationForm />
     </View>
   )
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
