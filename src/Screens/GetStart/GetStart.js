@@ -4,13 +4,16 @@ import { subtitle, title } from "./Data"
 import AtomText from "../../components/Atoms/AtomText"
 import MoleButton from "../../components/Molecules/MoleButton"
 
-export default function GetStart() {
+export default function GetStart({ navigation }) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
       <AtomText text={title} customStyle={styles.title} />
       <AtomText text={subtitle} customStyle={styles.subtitle} />
-      <MoleButton title="Get Started" />
+      <MoleButton
+        handleClick={() => navigation.navigate("login")}
+        title="Get Started"
+      />
     </View>
   )
 }

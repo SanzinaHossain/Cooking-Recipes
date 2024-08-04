@@ -1,11 +1,13 @@
 import React from "react"
-import { Image, View } from "react-native"
+import { Image, StyleSheet, View } from "react-native"
 import logo from "../../../assets/logo.png"
+import LoginForm from "./LoginForm"
 
 export default function Login() {
   return (
-    <View>
+    <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
+      <LoginForm />
     </View>
   )
 }
@@ -17,6 +19,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 20,
+    width: "100%",
   },
 
   button: {
