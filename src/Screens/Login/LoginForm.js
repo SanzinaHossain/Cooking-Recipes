@@ -3,19 +3,11 @@ import { StyleSheet, Text, TextInput, View } from "react-native"
 import MoleButton from "../../components/Molecules/MoleButton"
 import { appColor } from "../../components/Constant"
 import { useNavigation } from "@react-navigation/native"
+import LoginHooks from "../../Hooks/LoginHooks"
 
 export default function LoginForm() {
   const navigation = useNavigation()
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  })
+  const { handleSignIn, errors, control, handleSubmit } = LoginHooks()
   const onSubmit = (data) => console.log(data)
   return (
     <View style={styles.container}>
@@ -69,7 +61,7 @@ export default function LoginForm() {
 
       <MoleButton
         customStyle={styles.button}
-        handleClick={handleSubmit(onSubmit)}
+        handleClick={handleSubmit(handleSignIn)}
         title="Login"
       />
       <Text>Don't Have Any Account?</Text>
