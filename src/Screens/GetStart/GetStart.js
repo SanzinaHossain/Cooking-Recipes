@@ -1,16 +1,16 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Image, StyleSheet, View } from "react-native"
 import logo from "../../../assets/logo.png"
 import { subtitle, title } from "./Data"
+import AtomText from "../../components/Atoms/AtomText"
+import MoleButton from "../../components/Molecules/MoleButton"
 
 export default function GetStart() {
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.subtitle}>{subtitle}</Text>
-      <TouchableOpacity activeOpacity={0.9} style={styles.button}>
-        <Text style={styles.text}>Get Started</Text>
-      </TouchableOpacity>
+      <AtomText text={title} customStyle={styles.title} />
+      <AtomText text={subtitle} customStyle={styles.subtitle} />
+      <MoleButton title="Get Started" />
     </View>
   )
 }
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     paddingVertical: 15,
-    fontStyle: "bold",
     fontWeight: "bold",
   },
   subtitle: {
@@ -35,24 +34,11 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     marginBottom: 20,
   },
-  button: {
-    backgroundColor: "seagreen",
-    padding: 20,
-    width: "80%",
-    borderRadius: 50,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   logo: {
     width: 200,
     height: 200,
     resizeMode: "contain",
     justifyContent: "center",
     alignItems: "center",
-  },
-  text: {
-    fontSize: 20,
-    color: "white",
-    fontWeight: "bold", // Makes the text bold
   },
 })
