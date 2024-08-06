@@ -3,10 +3,15 @@ import { auth } from "../../firebase.init"
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth"
+import { Alert } from "react-native"
+import { useContext } from "react"
+import { AuthContext } from "../Context/AuthContext"
 import { useNavigation } from "@react-navigation/native"
 
 export default function LoginHooks() {
+  const { setUser, user } = useContext(AuthContext)
   const navigation = useNavigation()
   const {
     control,
@@ -20,13 +25,16 @@ export default function LoginHooks() {
     },
   })
 
+  // user signup function...........
+
   const handleRegistration = (data) => {
     const email = data?.email
     const password = data?.password
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user
-        console.log("user:", user)
+        Alert.alert("User SignUp Successfully")
+        navigation.navigate("login")
       })
       .catch((error) => {
         const errorMessage = error.message
@@ -34,19 +42,41 @@ export default function LoginHooks() {
       })
   }
 
+  // user login function...........
+
   const handleSignIn = (data) => {
     const email = data?.email
     const password = data?.password
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user
-        console.log("Login User:", user)
+        setUser(user)
         navigation.navigate("home")
+        Alert.alert("User Login Successfully")
       })
       .catch((error) => {
         const errorMessage = error.message
         console.log(errorMessage)
       })
   }
-  return { handleSubmit, control, errors, handleRegistration, handleSignIn }
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setUser(null)
+        Alert.alert("SignOut Successfully")
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
+
+  return {
+    handleSubmit,
+    control,
+    errors,
+    handleRegistration,
+    handleSignIn,
+    handleLogout,
+  }
 }

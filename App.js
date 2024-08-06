@@ -1,8 +1,13 @@
-import StackNavigation from "./src/Navigation/StackNavigation"
 import { LogBox } from "react-native"
+import AuthProvider from "./src/Context/AuthContext"
+import NavApp from "./src/Navigation/NavApp"
 
 LogBox.ignoreAllLogs()
 
 export default function App() {
-  return <StackNavigation />
+  return (
+    <AuthProvider>
+      <NavApp />
+    </AuthProvider>
+  )
 }
