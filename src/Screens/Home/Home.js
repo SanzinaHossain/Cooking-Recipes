@@ -1,13 +1,10 @@
-import { Text, View } from "react-native"
-import MoleButton from "../../components/Molecules/MoleButton"
-import LoginHooks from "../../Hooks/LoginHooks"
+import { StyleSheet, View } from "react-native"
 
 export default function Home() {
-  const { handleLogout } = LoginHooks()
-  return (
-    <View>
-      <Text>Find User</Text>
-      <MoleButton handleClick={handleLogout} title="Logout" />
-    </View>
-  )
+  return <View></View>
 }
+const styles = StyleSheet.create({
+  container: {
+    fontSize: 10,
+  },
+})

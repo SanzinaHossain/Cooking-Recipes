@@ -51,7 +51,7 @@ export default function LoginHooks() {
       .then((userCredential) => {
         const user = userCredential.user
         setUser(user)
-        navigation.navigate("home")
+        navigation.navigate("Home")
         Alert.alert("User Login Successfully")
       })
       .catch((error) => {
