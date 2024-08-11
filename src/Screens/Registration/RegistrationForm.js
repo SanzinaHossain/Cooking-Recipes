@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form"
 import { StyleSheet, Text, TextInput, View } from "react-native"
 import MoleButton from "../../components/Molecules/MoleButton"
-import { appColor } from "../../components/Constant"
+import { appColor, ScreenName } from "../../components/Constant"
 import { useNavigation } from "@react-navigation/native"
 import LoginHooks from "../../Hooks/LoginHooks"
 
@@ -88,7 +88,7 @@ export default function RegistrationForm() {
       <MoleButton
         customStyle={styles.createAccountButton}
         title="Login "
-        handleClick={() => navigation.navigate("login")}
+        handleClick={() => navigation.navigate(ScreenName.LOGIN)}
       />
     </View>
   )

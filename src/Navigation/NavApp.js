@@ -6,10 +6,9 @@ import StackTabNavigation from "./StackTabNavigation"
 
 export default function NavApp() {
   const { user } = useContext(AuthContext)
-
   return (
     <NavigationContainer>
-      {user ? <StackTabNavigation /> : <StackAuthNavigation />}
+      {user?.email ? <StackTabNavigation /> : <StackAuthNavigation />}
     </NavigationContainer>
   )
 }

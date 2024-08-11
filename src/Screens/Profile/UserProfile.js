@@ -13,7 +13,9 @@ export default function UserProfile() {
   return (
     <View style={styles.container}>
       <FontAwesome name="user-circle" size={100} color={appColor.PRIMARY} />
-      <Text style={styles.textStyle}>{user?.displayName}</Text>
+      <Text style={styles.textStyle}>
+        {user?.displayName ? user.displayName : "Name Not Register"}
+      </Text>
       <Text style={styles.textStyle}>{user?.email}</Text>
       <View></View>
       <MoleButton handleClick={handleLogout} title="Logout" />

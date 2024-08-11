@@ -3,6 +3,7 @@ import logo from "../../../assets/logo.png"
 import { subtitle, title } from "./Data"
 import AtomText from "../../components/Atoms/AtomText"
 import MoleButton from "../../components/Molecules/MoleButton"
+import { ScreenName } from "../../components/Constant"
 
 export default function GetStart({ navigation }) {
   return (
@@ -11,7 +12,7 @@ export default function GetStart({ navigation }) {
       <AtomText text={title} customStyle={styles.title} />
       <AtomText text={subtitle} customStyle={styles.subtitle} />
       <MoleButton
-        handleClick={() => navigation.navigate("login")}
+        handleClick={() => navigation.navigate(ScreenName.LOGIN)}
         title="Get Started"
       />
     </View>

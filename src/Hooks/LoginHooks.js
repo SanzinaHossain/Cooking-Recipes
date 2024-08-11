@@ -10,9 +10,10 @@ import { Alert } from "react-native"
 import { useContext } from "react"
 import { AuthContext } from "../Context/AuthContext"
 import { useNavigation } from "@react-navigation/native"
+import { ScreenName } from "../components/Constant"
 
 export default function LoginHooks() {
-  const { setUser, user } = useContext(AuthContext)
+  const { setUser } = useContext(AuthContext)
   const navigation = useNavigation()
   const {
     control,
@@ -39,7 +40,7 @@ export default function LoginHooks() {
           displayName: name,
         })
         Alert.alert("User SignUp Successfully")
-        navigation.navigate("login")
+        navigation.navigate(ScreenName.LOGIN)
       })
       .catch((error) => {
         const errorMessage = error.message
@@ -58,7 +59,7 @@ export default function LoginHooks() {
         setUser(user)
         Alert.alert("User Login Successfully")
         {
-          user && navigation.navigate("Home")
+          user && navigation.navigate(ScreenName.HOME)
         }
       })
       .catch((error) => {
