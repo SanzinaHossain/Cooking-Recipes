@@ -1,2 +1,3 @@
 import * as appColor from "./constantAppColor"
-export { appColor }
+import * as ScreenName from "./ConstantScreenName"
+export { appColor, ScreenName }

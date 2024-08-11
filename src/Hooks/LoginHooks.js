@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth"
 import { Alert } from "react-native"
 import { useContext } from "react"
@@ -30,9 +31,13 @@ export default function LoginHooks() {
   const handleRegistration = (data) => {
     const email = data?.email
     const password = data?.password
+    const name = data.name
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user
+        updateProfile(user, {
+          displayName: name,
+        })
         Alert.alert("User SignUp Successfully")
         navigation.navigate("login")
       })
@@ -51,8 +56,10 @@ export default function LoginHooks() {
       .then((userCredential) => {
         const user = userCredential.user
         setUser(user)
-        navigation.navigate("Home")
         Alert.alert("User Login Successfully")
+        {
+          user && navigation.navigate("Home")
+        }
       })
       .catch((error) => {
         const errorMessage = error.message
